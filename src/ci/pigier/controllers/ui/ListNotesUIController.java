@@ -158,6 +158,8 @@ public class ListNotesUIController extends BaseController implements Initializab
         }
     }
     
+    //Sppression des notes ajoutées
+    
     private void deleteNoteFromDatabase(int noteId) {
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement("DELETE FROM notes WHERE id = ?")) {

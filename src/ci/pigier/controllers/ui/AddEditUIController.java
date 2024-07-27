@@ -53,12 +53,12 @@ public class AddEditUIController extends BaseController implements Initializable
 
     @FXML
     void doSave(ActionEvent event) throws IOException {
-        // Supprimer l'ancienne note de la liste si elle existe
+        // Suppression de l'ancienne note de la liste lorsqu'elle existe deja 
         if (Objects.nonNull(editNote)) {
             data.remove(editNote);
         }
         
-        // Vérifier si les champs sont vides
+        // Vérification des champs lorsqu'ils sont vides
         if (titleTxtFld.getText().trim().isEmpty() || descriptionTxtArea.getText().trim().isEmpty()) {
             alert = new Alert(AlertType.WARNING);
             alert.setTitle("Warning Dialog");
@@ -68,25 +68,23 @@ public class AddEditUIController extends BaseController implements Initializable
             return;
         }
         
-        // Créer ou mettre à jour la note dans la base de données
+        // Création ou mise à jour de la note dans la base de données
         if (Objects.nonNull(editNote)) {
             updateNoteInDatabase();
         } else {
             insertNoteInDatabase();
         }
         
-        // Actualiser la liste observable data avec les données de la base de données
-        loadNotesFromDatabase(); // Cette méthode doit charger toutes les notes depuis la base de données dans data
+        // Actualisation de la liste avec les données de la base de données
+        loadNotesFromDatabase(); // Cela permet le chargement de toutes les notes depuis la base de données
         
-        // Navigation vers la liste après l'opération
+        // Navigation vers la liste après validation de  l'opération
         navigate(event, FXMLPage.LIST.getPage());
         
-        // Actualiser la TableView pour refléter les changements
-//        notesListTable.refresh();
     }
     
     private void loadNotesFromDatabase() {
-        data.clear(); // Effacer les données actuelles de la liste observable
+        data.clear(); // Effacer les données actuelles de la liste
         try (Connection connection = DatabaseConnection.getConnection();
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery("SELECT * FROM notes")) {
@@ -130,7 +128,7 @@ public class AddEditUIController extends BaseController implements Initializable
 	                int id = generatedKeys.getInt(1);
 	                data.add(new Note(id, titleTxtFld.getText(), descriptionTxtArea.getText()));
 	            } else {
-	                throw new SQLException("Échec de la récupération de l'ID généré.");
+	                throw new SQLException("Échec de la récupération de l'Identifiant généré.");
 	            }
 	        }
 	    } catch (SQLException e) {

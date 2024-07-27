@@ -17,7 +17,7 @@ public class NoteTakingApp extends Application {
      */
     public static void main(String[] args) {
         launch(args);
-		Connection connection = DatabaseConnection.getConnection();
+		Connection connection = BasedeDonnee.getConnection();
 
         try {
             // Fermer la connexion

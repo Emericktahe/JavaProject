@@ -4,7 +4,7 @@
  *
  * Packt Book: JavaFX 8 essentials 
  * Chapter 3. Developing a JavaFX desktop and web application
- * @author Mohamed Taman
+ * @author Mohamed Taman && Emerick tahe
  *
  * -->
 
@@ -28,7 +28,7 @@
                   </ImageView>
                </children>
             </HBox>
-            <Label alignment="CENTER" prefHeight="70.0" prefWidth="313.0" text="App De Prise De Note" textAlignment="CENTER" textFill="WHITE">
+            <Label alignment="CENTER" prefHeight="70.0" prefWidth="313.0" text="Note App" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="30.0" />
                </font>
